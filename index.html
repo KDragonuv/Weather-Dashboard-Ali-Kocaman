@@ -2,12 +2,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <h1>Weather Forecast</h1>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    
     <link rel="stylesheet" href="assets/style/style.css">
 </head>
 <body>
+    <h2></h2>
+
+    <main id= "weatherData">
+       
+        <h2 id="dateToday"></h2>
+        <h2 id="icon">icon</h2>
+        <p>City: <span id="City"></span></p>
+        <p>Temperature: <span id="Temperature"></span></p>
+        <p>Description: <span id="Description"></span></p>
+
+        <label id="searchCity">
+            <input type="text" name="" id="citySearch" 
+            placeholder="Search City"/>
+            <button>Enter</button>
+        </label>
+        
+        <section id="future">
+            <h2>The Forecasts For The Next 5 Days</h2>
+
+
+        </section>
+        
+    </main>
+
+
+
     <script src="./assets/java/java.js"></script>
+
 </body>
 </html>
