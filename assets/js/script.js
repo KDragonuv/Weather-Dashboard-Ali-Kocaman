@@ -44,8 +44,6 @@ var displayWeather = function(weather, searchCity){
    weatherContainerEl.textContent= "";  
    citySearchInputEl.textContent=searchCity;
 
-   //console.log(weather);
-
    //create date element
    var currentDate = document.createElement("span")
    currentDate.textContent=" (" + moment(weather.dt.value).format("MMM D, YYYY") + ") ";
@@ -94,11 +92,9 @@ var getUvIndex = function(lat,lon){
     .then(function(response){
         response.json().then(function(data){
             displayUvIndex(data)
-           // console.log(data)
+           
         });
     });
-    //console.log(lat);
-    //console.log(lon);
 }
  
 var displayUvIndex = function(index){
@@ -148,7 +144,6 @@ var display5Day = function(weather){
        var forecastEl=document.createElement("div");
        forecastEl.classList = "card bg-primary text-light m-2";
 
-       //console.log(dailyForecast)
 
        //create date element
        var forecastDate = document.createElement("h5")
@@ -166,12 +161,14 @@ var display5Day = function(weather){
        forecastEl.appendChild(weatherIcon);
        
        //create temperature span
-       var forecastTempEl=document.createElement("span");
+       var temperatureFahrenheit = dailyForecast.main.temp;
+       var temperatureCelsius = (temperatureFahrenheit - 32) / 1.8;
+       var forecastTempEl = document.createElement("span");
        forecastTempEl.classList = "card-body text-center";
-       forecastTempEl.textContent = dailyForecast.main.temp + " °F";
-
-        //append to forecast card
-        forecastEl.appendChild(forecastTempEl);
+       forecastTempEl.textContent = temperatureCelsius.toFixed(2) + " °C";
+       
+       //append to forecast card
+       forecastEl.appendChild(forecastTempEl);
 
        var forecastHumEl=document.createElement("span");
        forecastHumEl.classList = "card-body text-center";
@@ -180,16 +177,13 @@ var display5Day = function(weather){
        //append to forecast card
        forecastEl.appendChild(forecastHumEl);
 
-        // console.log(forecastEl);
        //append to five day container
-        forecastContainerEl.appendChild(forecastEl);
+       forecastContainerEl.appendChild(forecastEl);
     }
 
 }
 
 var pastSearch = function(pastSearch){
- 
-    // console.log(pastSearch)
 
     pastSearchEl = document.createElement("button");
     pastSearchEl.textContent = pastSearch;
