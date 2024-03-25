@@ -57,10 +57,12 @@ var displayWeather = function(weather, searchCity){
    citySearchInputEl.appendChild(weatherIcon);
 
    //create a span element to hold temperature data
+   var temperatureFahrenheit = weather.main.temp;
+   var temperatureCelsius = (temperatureFahrenheit - 32) / 1.8;
    var temperatureEl = document.createElement("span");
-   temperatureEl.textContent = "Temperature: " + weather.main.temp + " °F";
-   temperatureEl.classList = "list-group-item"
-  
+   temperatureEl.textContent = "Temperature: " + temperatureCelsius.toFixed(2) + " °C";
+   temperatureEl.classList = "list-group-item";
+
    //create a span element to hold Humidity data
    var humidityEl = document.createElement("span");
    humidityEl.textContent = "Humidity: " + weather.main.humidity + " %";
